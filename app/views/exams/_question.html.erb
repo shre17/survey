@@ -1,0 +1,15 @@
+ <li>
+    <%= f.label :question %>
+    <%= f.text_field :title %>
+
+    <p>
+      <%= f.check_box :_destroy %> Remove
+   
+    </p>
+  </li>
+<br>
+<br>
+    <%= f.fields_for :answers do |answer_form| %>
+
+     <%= render 'answer', f: answer_form , q: f %>
+   <% end %>

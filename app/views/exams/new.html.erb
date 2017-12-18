@@ -1,0 +1,18 @@
+<% if current_user.try(:admin?)%>
+<%= form_for @exam do |f| %>
+  <%= f.label :tilte %>
+  <%= f.text_field :title %>
+  <br>
+  <br>
+  <%= f.fields_for :questions do |question_form| %>
+    <%= render 'question', f: question_form %>
+  <%end%>
+  <%=f.submit  :class => 'btn btn-primary' %>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+               exams_path, :class => 'btn btn-default'  %>
+ <% end %>
+ <%else%>
+ <%= link_to "start test", exams_path , :class => 'btn btn-default' %>
+ <% end %>
+
+ 

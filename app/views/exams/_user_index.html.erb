@@ -1,0 +1,27 @@
+<%- model_class = Exam -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:title) %></th>
+      <th><%= model_class.human_attribute_name(:question) %></th>
+      <br>
+      <br>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @exam.each do |exam| %>
+      <tr>
+        <td><%= link_to exam.title, exam_path(exam) %></td>
+        <td><%= exam.questions.map {|q| q.title} %></td>
+        <td>
+          <%= link_to t('.show', :default => t("helpers.links.show")),
+                      exam_path(exam), :class => 'btn btn-default btn-xs' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

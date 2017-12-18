@@ -1,0 +1,9 @@
+$(".<%=@answer.question_id%>").hide();
+<% @question.answers.each do |an|%>
+  <% if an.id == @answer.id %>
+    $("#<%=@answer.id%>").html("<%= @answer.correct_answer%>");
+
+  <% else %>
+    $("#<%=an.id%>").html('false');
+  <% end %>
+<% end %>
